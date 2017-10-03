@@ -1,0 +1,79 @@
+<div class="sidebar">
+  <app-sidebar-header></app-sidebar-header>
+  <app-sidebar-form></app-sidebar-form>
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <li class="nav-title">
+        Dashboard
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
+      </li>
+
+      <!-- hafidz : add here [START] -->
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/login']"><i class="icon-user"></i> Login </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/register']"><i class="icon-list"></i> Register </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/profile']"><i class="icon-user"></i> Profile </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/guest-register']"><i class="icon-user"></i> Guest Registration </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/management-activity']"><i class="icon-user"></i> Activity Management </a>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/responsive']"><i class="icon-list"></i> Responsive </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/selection']"><i class="icon-list"></i> Selection </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/charting']"><i class="icon-pie-chart"></i> Charting </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/table']"><i class="icon-hourglass"></i> Table </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/time']"><i class="icon-hourglass"></i> Time </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/charting']"><i class="icon-credit-card"></i> Payment </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dynamic']"><i class="icon-credit-card"></i> Dynamic </a>
+        </li>
+
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-handbag"></i> Product</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/add']"><i class="icon-plus"></i> Add</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/list']"><i class="icon-list"></i> List <span class="badge badge-info">1,234</span></a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- hafidz : add here [END] -->
+
+    </ul>
+  </nav>
+  <app-sidebar-footer></app-sidebar-footer>
+</div>

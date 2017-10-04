@@ -1,0 +1,22 @@
+[
+    {
+        "status": "successful",
+        "response": {
+            "id": 15,
+            "user_id": 1,
+            "vehicle_id": 1,
+            "location_id": 1,
+            "time_in": 1496247827,
+            "time_out": null,
+            "status": 1,
+            "rates": 0.00,
+            "location_name": "Home",
+            "vehicle_plate": "WXC3827",
+            "car_park_ref": "0",
+            "car_park_id": null,
+            "remarks": null,
+            "current_time": 1496248067
+        },
+        "raw": "successful"
+    }
+]

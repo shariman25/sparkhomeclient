@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "first_name": "First",
+        "last_name": "Last",
+        "email": "email@address.com",
+        "identification": null,
+        "address": null,
+        "mobile": null,
+        "gender": null,
+        "age": null,
+        "profile_photo": null,
+        "lpid": null,
+        "api_token": "o7KODzJjF5oc0E71VSsDqe1zUDNl5YcOlEvnmWOdk4MBGNwCcn4eKtWSiwLD",
+        "credit": {
+            "amount": 0,
+            "points": 0
+        },
+        "vehicles": []
+    }
+]

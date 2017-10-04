@@ -8,7 +8,7 @@
         <div class="card-body">
 
 
-          <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+          <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div style="text-align:center; margin-bottom:20px;">
               <a href="" style="margin-left: 10px;font-size: 20px"><i class="icon-home" style="font-size: 35px"></i><b style="font-size: 40px">SPARK</b>Home</a>
             </div>
@@ -30,7 +30,9 @@
               </div>
             </div>
 
-            {{error}}
+            <div class="col-1" class="social-auth-links text-left" style="color:red">
+              <p>{{error}}</p>
+            </div>
 
             <div class="row">
               <div class="form-group">

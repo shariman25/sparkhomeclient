@@ -11,25 +11,59 @@ import {AuthenticationService} from './../../auth/authentication.service';
 import {httpApiService} from './../../http/http.api.service';
 import { Observable } from 'rxjs/Rx';
 
-import {VideoService} from './videoService';
+import { AuthService } from './../../services/auth.service';
+
+import { AuthJsonService } from './../../services/auth.service.json';
+import { ApiJsonService } from './../../services/api.service.json';
+
+
+
 
 @Component({
   selector: 'login-form',
-  providers: [AuthenticationService, httpApiService],
+  providers: [AuthenticationService, httpApiService, AuthService, ApiJsonService, AuthJsonService],
   templateUrl: 'login.component.html'
 })
 export class LoginComponent {
 
-  error : string;
+  error : any;
   jsonObj : string;
   
   constructor(
     private _authService:AuthenticationService,
+    //private auth: AuthService,
+    private _auth: AuthJsonService,
     private _router: Router
   ) {}
   // constructor(private http: Http) {
 
   // }
+
+  //private json;
+  login(form: NgForm) {
+    let json;
+    this._auth.login(form.value)
+      .map((response:any) => json = response)
+      .subscribe(data =>{
+        if(data.status != null){
+          console.log("login failed = " + data.status);
+          this.error = 'Invalid Credential';
+        }else if(data.id > 0){
+          console.log("login success with id = " 
+            + data.id + " "
+            + data.first_name + " "
+            + data.email);
+            this._router.navigate(['']); 
+        }
+        
+      },
+      error => {
+        console.log(error)
+    });
+    
+      //error => this.error = 'Failed to login'
+    //);
+  }
 
   onSubmit(form: NgForm) {
 

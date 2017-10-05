@@ -79,6 +79,10 @@ export const routes: Routes = [
         loadChildren: './views/time/time.module#TimeModule'
       },
       {
+        path: 'audittrail',
+        loadChildren: './audittrail/audittrail.module#AuditTrailModule'
+      },
+      {
         path: 'dynamic',
         loadChildren: './templates/dynamic/dynamic.module#DynamicModule'
       },

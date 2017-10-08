@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { ManagementActivityComponent } from './management.activity.component';
 import { ManagementActivityRoutingModule } from './management.activity-routing.module';
@@ -7,7 +8,8 @@ import { ManagementActivityRoutingModule } from './management.activity-routing.m
 @NgModule({
   imports: [
     ManagementActivityRoutingModule,
-    FormsModule 
+    FormsModule,
+    CommonModule
   ],
   declarations: [ ManagementActivityComponent ]
 })

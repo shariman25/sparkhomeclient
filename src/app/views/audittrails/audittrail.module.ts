@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 
-import { AuditTrailComponent } from './audittrail.component';
+import { AuditTrailJsonComponent } from './audittrail.json.component';
+import { AuditTrailApiComponent } from './audittrail.api.component';
+
 import { AuditTrailRoutingModule } from './audittrail-routing.module';
 
 @NgModule({
@@ -11,6 +13,9 @@ import { AuditTrailRoutingModule } from './audittrail-routing.module';
     FormsModule,
     CommonModule
   ],
-  declarations: [ AuditTrailComponent ]
+  declarations: [ 
+    AuditTrailJsonComponent,
+    AuditTrailApiComponent
+   ]
 })
 export class AuditTrailModule { }

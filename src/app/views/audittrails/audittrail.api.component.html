@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6" style="min-width: 400px; max-width:700px;">
+      <div class="card" style="width:700px;">
+        <div class="card-header">
+          <strong>Audit Trail</strong>
+          <small>API</small>
+        </div>
+        <div class="card-body">
+          <form #auditTrailForm="ngForm" (ngSubmit)="onSubmit(auditTrailForm)">
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="selectaction">Select Action</label>
+              <div class="col-md-9" style="margin:5px 0px;">
+                <select id="selectaction" [(ngModel)]="defaultOptionAction" name="select_action" class="form-control form-control-sm">
+                      <option [value]=null>Please Select</option>
+                      <option *ngFor="let option of optionAction" [value]="option.id"> {{ option.action }} </option>
+                    </select>
+              </div>
+
+              <label class="col-md-3 form-control-label" for="selectapi">Select API</label>
+              <div class="col-md-9" style="margin:5px 0px;">
+                <select id="selectapi" [(ngModel)]="defaultOptionApi" (ngModelChange)="updateJsonSend($event)" name="select_api" class="form-control form-control-sm">
+                    <option [value]=null>Please Select</option>
+                    <option *ngFor="let option of optionApi" [value]="option.id"> {{ option.api }} </option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="textarea-input">Json Send</label>
+              <div class="col-md-9" style="margin:5px 0px;">
+                <textarea id="textarea-input" rows="9" class="form-control" placeholder="Content.." name="json_send" [(ngModel)]="jsonSend"></textarea>
+              </div>
+              <div class="col-md-10"></div>
+              <div class="col-md-2" style="margin:5px 0px;">
+                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                <!-- <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button> -->
+              </div>
+              <label class="col-md-3 form-control-label" for="textarea-input">Json Received</label>
+              <div class="col-md-9" style="margin:5px 0px;">
+                <textarea id="textarea-input" rows="9" class="form-control" placeholder="Content.." name="json_receive" [(ngModel)]="jsonReceive"></textarea>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

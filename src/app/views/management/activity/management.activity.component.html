@@ -1,7 +1,58 @@
 <div class="animated fadeIn">
-<!--<div class="app flex-row align-items-center">
-  <div class="container">
-    <div class="row justify-content-center">-->
+  <div class="row">
+    <div class="col-sm-6" style="min-width: 400px; max-width:800px;">
+      <div class="card" style="width:800px;">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>
+          <strong>Activity Management</strong>
+          <!-- <small>Json</small> -->
+        </div>
+        <div class="card-body">
+          <form #activityManagementForm="ngForm" (ngSubmit)="onSubmit(activityManagementForm)">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Guest Name</th>
+                  <th>Vehicle No</th>
+                  <th>Time-In</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let activity of activities">
+                    <td>{{activity.name}}</td>
+                    <td>{{activity.vehicleno}}</td>
+                    <td>{{activity.timein}}</td>
+                    <td>{{activity.Status}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm" style="width:100px;"><i class="icon-user"></i> info</button>
+                        <button type="button" class="btn btn-warning btn-sm" style="width:100px;"><i class="icon-pencil"></i> Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm" style="width:100px;"><i class="fa fa-remove"></i> Cancel</button>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+            <nav>
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="animated fadeIn">
       <div class="col-md-12" style="min-width: 400px; max-width:700px">
         <div class="card mx-4">
           <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
@@ -92,7 +143,4 @@
           </form>
         </div>
       </div>
-   <!-- </div>
-  </div>
-</div>-->
-</div>
+</div> -->

@@ -14,6 +14,21 @@ import {Headers} from '@angular/http';
 export class ManagementActivityComponent {
 
   error : string;
+  
+  
+  private activities = [
+    { name: 'Vishnu Serghei', vehicleno: 'WWQ 7765', timein: '8:30am', Status: 'Active'},
+    { name: 'Zbyněk Phoibos', vehicleno: 'ABC 1234', timein: '10.01pm', Status: 'Banned'},
+    { name: 'Einar Randall', vehicleno: 'RF 1002', timein: '12.01pm', Status: 'Inactive'},
+    { name: 'Félix Troels', vehicleno: 'JKL 2222', timein: '2:45pm', Status: 'TimeOver'},
+    { name: 'Aulus Agmundr', vehicleno: 'WWW 6666', timein: '4.20pm', Status: 'TimeOver'},
+  ];
+
+  private campers = [
+    { username: 1, recent: 'POST', alltime: 'POST' },
+    { username: 2, recent: 'GET', alltime: 'POST' },
+  ];
+  defaultOptionAction = null;
 
   constructor(
     private http: Http,

@@ -28,12 +28,12 @@
       </li>
 
       <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/management-activity']"><i class="icon-user"></i> Activity Management </a>
-        </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/responsive']"><i class="icon-list"></i> Responsive </a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/management-activity']"><i class="icon-user"></i> Activity Management </a>
       </li>
+
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/responsive']"><i class="icon-list"></i> Responsive </a>
+      </li> -->
 
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/selection']"><i class="icon-list"></i> Selection </a>
@@ -43,16 +43,30 @@
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/charting']"><i class="icon-pie-chart"></i> Charting </a>
       </li>
 
-      <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/table']"><i class="icon-hourglass"></i> Table </a>
-      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/table']"><i class="icon-hourglass"></i> Table </a>
+      </li> -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/time']"><i class="icon-hourglass"></i> Time </a>
-      </li>
+      </li> -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail']"><i class="icon-credit-card"></i> Audit Trail </a>
+      </li> -->
+
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-handbag"></i> Audit Trails</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <!-- <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/add']"><i class="icon-plus"></i> Add</a> -->
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail/json']"><i class="icon-credit-card"></i> Audit Trail (json) </a>
+          </li>
+          <li class="nav-item">
+            <!-- <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/list']"><i class="icon-list"></i> List <span class="badge badge-info">1,234</span></a> -->
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail/api']"><i class="icon-credit-card"></i> Audit Trail (API) </a>
+          </li>
+        </ul>
       </li>
 
       <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
@@ -64,6 +78,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/list']"><i class="icon-list"></i> List <span class="badge badge-info">1,234</span></a>
           </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail/api']"><i class="icon-credit-card"></i> Audit Trail (API) </a>
+          </li> -->
         </ul>
       </li>
 

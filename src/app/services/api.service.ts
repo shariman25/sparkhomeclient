@@ -22,6 +22,7 @@ export class ApiService {
   }
 
   login(credentials): Observable<any> {
+    console.log("api login : " + JSON.stringify(credentials));
     return this.http.post(this.domainUrl + '/api/user/login', JSON.stringify(credentials), this.options);
   }
 

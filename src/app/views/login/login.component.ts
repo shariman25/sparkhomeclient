@@ -31,8 +31,8 @@ export class LoginComponent {
   
   constructor(
     private _authService:AuthenticationService,
-    //private auth: AuthService,
-    private _auth: AuthJsonService,
+    private _auth: AuthService,
+    //private _auth: AuthJsonService,
     private _router: Router
   ) {}
   // constructor(private http: Http) {

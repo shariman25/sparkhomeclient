@@ -8,14 +8,14 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
 import { Headers } from '@angular/http';
 
-import { InputService } from './../services/input.service';
-import { ApiJsonService } from './../services/api.service.json';
+import { InputService } from './../../services/input.service';
+import { ApiJsonService } from './../../services/api.service.json';
 
 @Component({
-  templateUrl: 'audittrail.component.html',
+  templateUrl: 'audittrail.json.component.html',
   providers: [InputService, ApiJsonService]
 })
-export class AuditTrailComponent {
+export class AuditTrailJsonComponent {
 
   error: string;
   private jsonSend: string;
@@ -66,7 +66,7 @@ export class AuditTrailComponent {
 
     if (value > 0) {
       if (value == 1) {
-        this._inputService.login()
+        this._inputService.user_create()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -82,7 +82,7 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 3) {
-        this._inputService.login()
+        this._inputService.user_upload()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -98,7 +98,7 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 5) {
-        this._inputService.login()
+        this._inputService.logout()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -106,7 +106,7 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 6) {
-        this._inputService.login()
+        this._inputService.user_info()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -114,7 +114,7 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 7) {
-        this._inputService.login()
+        this._inputService.user_changepwd()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -122,7 +122,7 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 8) {
-        this._inputService.login()
+        this._inputService.vehicle_create()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -130,7 +130,7 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 9) {
-        this._inputService.login()
+        this._inputService.vehicle_upload()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -138,7 +138,7 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 10) {
-        this._inputService.login()
+        this._inputService.vehicle_list()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -146,7 +146,7 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 11) {
-        this._inputService.login()
+        this._inputService.vehicle_edit()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -154,7 +154,7 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 12) {
-        this._inputService.login()
+        this._inputService.vehicle_delete()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -162,7 +162,15 @@ export class AuditTrailComponent {
           });
       } else
       if (value == 13) {
-        this._inputService.login()
+        this._inputService.session_check()
+          .map((response: any) => json = response)
+          .subscribe(data => {
+            console.log("res : " + JSON.stringify(json));
+            this.jsonSend = JSON.stringify(json);
+          });
+      } else
+      if (value == 14) {
+        this._inputService.session_all()
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));

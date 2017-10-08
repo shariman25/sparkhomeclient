@@ -13,8 +13,8 @@ export class AuthService {
 
   currentUser = { _id: '', username: '', role: '' };
 
-  constructor(private apiService: ApiService,
-    private router: Router) {
+  constructor(private _apiService: ApiService,
+    private _router: Router) {
     // const token = localStorage.getItem('token');
     // if (token) {
     //   const decodedUser = this.decodeUserFromToken(token);
@@ -22,27 +22,54 @@ export class AuthService {
     // }
   }
 
-
-  login(emailAndPassword) {
-    console.log("res : " + emailAndPassword)
-    return this.apiService.login(emailAndPassword).map(res => res.json()).map(
-      res => {
-        console.log("res : " + res)
-        // localStorage.setItem('token', res.token);
-        // const decodedUser = this.decodeUserFromToken(res.token);
-        // this.setCurrentUser(decodedUser);
-        //return this.loggedIn;
-      }
-    );
+  public login(emailAndPassword) {
+    console.log("emailAndPassword = " + emailAndPassword);
+    return this._apiService.login(emailAndPassword)
+      .map((response: any) => {
+        var data = response["_body"];
+        localStorage.setItem("user", JSON.stringify(data));
+        console.log("response = " + data);
+        var obj = JSON.parse(data);
+        return obj;
+      });
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    this.loggedIn = false;
-    this.isAdmin = false;
-    this.currentUser = { _id: '', username: '', role: '' };
-    this.router.navigate(['/']);
+  public logout() {
+    console.log("logout");
+    localStorage.removeItem("user");
+    this._router.navigate(['login']);
   }
+
+  public checkCredentials() {
+    console.log("checkCredentials");
+    if (localStorage.getItem("user") === null) {
+      console.log("user non exist");
+      this._router.navigate(['login']);
+    } else {
+      console.log("user exist");
+    }
+  }
+
+  // login(emailAndPassword) {
+  //   console.log("res : " + emailAndPassword)
+  //   return this.apiService.login(emailAndPassword).map(res => res.json()).map(
+  //     res => {
+  //       console.log("res : " + res)
+  //       // localStorage.setItem('token', res.token);
+  //       // const decodedUser = this.decodeUserFromToken(res.token);
+  //       // this.setCurrentUser(decodedUser);
+  //       //return this.loggedIn;
+  //     }
+  //   );
+  // }
+
+  // logout() {
+  //   localStorage.removeItem('token');
+  //   this.loggedIn = false;
+  //   this.isAdmin = false;
+  //   this.currentUser = { _id: '', username: '', role: '' };
+  //   this.router.navigate(['/']);
+  // }
 
   //   decodeUserFromToken(token) {
   //     return this.jwtHelper.decodeToken(token).user;

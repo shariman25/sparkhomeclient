@@ -80,7 +80,7 @@ export const routes: Routes = [
       },
       {
         path: 'audittrail',
-        loadChildren: './audittrail/audittrail.module#AuditTrailModule'
+        loadChildren: './views/audittrails/audittrail.module#AuditTrailModule'
       },
       {
         path: 'dynamic',

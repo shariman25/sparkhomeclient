@@ -13,194 +13,113 @@ export class InputService {
 
     constructor(private http: Http) { }
 
+    public user_create(): Observable<any> {
+        return this.http.get(this.assestUrl + "user_create.json")
+            .map((response: Response) => {
+                //console.log("return : " + response.json());
+                return response.json(); //pass json body
+            })
+            .catch((error: any) => error);//console.log(error));
+    }
+
     public user_update(): Observable<any> {
         return this.http.get(this.assestUrl + "user_update.json")
-            .map((response: Response) => {
-                //console.log("return : " + response.json());
-                return response.json(); //pass json body
-            })
-            .catch((error: any) => error);//console.log(error));
-    }
-
-    public login(): Observable<any> {
-        return this.http.get(this.assestUrl + "login.json")
-            .map((response: Response) => {
-                //console.log("return : " + response.json());
-                return response.json(); //pass json body
-            })
-            .catch((error: any) => error);//console.log(error));
-    }
-
-    public create_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "create_Error.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public update_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "update_Success.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public update_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "update_Error.json")
             .map((response: Response) => {
                 return response.json();
             })
             .catch((error: any) => error);
     }
 
-    public login_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "login_Success.json")
+    public user_upload(): Observable<any> {
+        return this.http.get(this.assestUrl + "user_upload.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public login_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "login_Error.json")
+    public login(): Observable<any> {
+        return this.http.get(this.assestUrl + "login.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public logout_Success(): Observable<any> {
-        return this.http.get(this.assestUrl + "logout_Success.json")
+    public logout(): Observable<any> {
+        return this.http.get(this.assestUrl + "logout.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public info_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "info_Success.json")
+    public user_info(): Observable<any> {
+        return this.http.get(this.assestUrl + "user_info.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public info_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "info_Error.json")
+    public user_changepwd(): Observable<any> {
+        return this.http.get(this.assestUrl + "user_changepwd.json")
+            .map((response: Response) => {
+                return response.json();
+            })
+            .catch((error: any) => error);
+    }
+
+    public vehicle_create(): Observable<any> {
+        return this.http.get(this.assestUrl + "vehicle_create.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public changepwd_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "changepwd_Success.json")
+    public vehicle_upload(): Observable<any> {
+        return this.http.get(this.assestUrl + "vehicle_upload.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public changepwd_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "changepwd_Error.json")
+    public vehicle_list(): Observable<any> {
+        return this.http.get(this.assestUrl + "vehicle_list.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public vehicleCreate_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "vehicleCreate_Success.json")
+    public vehicle_edit(): Observable<any> {
+        return this.http.get(this.assestUrl + "vehicle_edit.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public vehicleCreate_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "vehicleCreate_Error.json")
+    public vehicle_delete(): Observable<any> {
+        return this.http.get(this.assestUrl + "vehicle_delete.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public vehicleList_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "vehicleList_Success.json")
+    public session_check(): Observable<any> {
+        return this.http.get(this.assestUrl + "session_check.json")
             .map((response: Response) => {
                 return response.json(); 
             })
             .catch((error: any) => error);
     }
 
-    public vehicleList_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "vehicleList_Error.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public vehicleEdit_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "vehicleEdit_Success.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public vehicleEdit_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "vehicleEdit_Error.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public vehicleDelete_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "vehicleDelete_Success.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public vehicleDelete_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "vehicleDelete_Error.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public sessionCheck_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "sessionCheck_Success.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public sessionCheck_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "sessionCheck_Error.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public sessionAll_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "sessionAll_Success.json")
-            .map((response: Response) => {
-                return response.json(); 
-            })
-            .catch((error: any) => error);
-    }
-
-    public sessionAll_Error(): Observable<any> {
-        return this.http.get(this.assestUrl + "sessionAll_Error.json")
+    public session_all(): Observable<any> {
+        return this.http.get(this.assestUrl + "session_all.json")
             .map((response: Response) => {
                 return response.json(); 
             })

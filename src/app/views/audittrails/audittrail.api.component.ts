@@ -10,13 +10,14 @@ import { Headers } from '@angular/http';
 
 import { InputService } from './../../services/input.service';
 import { ApiService } from './../../services/api.service';
+import { AuthJsonService } from './../../services/auth.service.json';
 
 @Component({
   templateUrl: 'audittrail.api.component.html',
-  providers: [InputService, ApiService]
+  providers: [InputService, ApiService, AuthJsonService]
 })
 export class AuditTrailApiComponent {
-
+  private pageHeaderName = "AuditTrail";
   error: string;
   private jsonSend: string;
   private jsonReceive: string;
@@ -51,10 +52,16 @@ export class AuditTrailApiComponent {
     private _router: Router,
     private _inputService: InputService,
     private _apiService: ApiService,
+    private _service: AuthJsonService
   ) { }
 
   ngOnInit() {
-    //this.jsonSend = "lololo";
+    this._service.checkRole(this.pageHeaderName)
+      .subscribe(response => {
+        if (!response) {
+          this._router.navigate(['']);
+        }
+      });
   }
 
   public bodyReader(Res){
@@ -200,7 +207,7 @@ export class AuditTrailApiComponent {
     let api_token = "o7KODzJjF5oc0E71VSsDqe1zUDNl5YcOlEvnmWOdk4MBGNwCcn4eKtWSiwLD";
     if (value > 0) {
       if (value == 1) {
-        this._apiService.userCreate(jsonReq)
+        this._apiService.userCreate(jsonObj)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -208,7 +215,7 @@ export class AuditTrailApiComponent {
           });
       } else
       if (value == 2) {
-        this._apiService.userUpdate(jsonReq)
+        this._apiService.userUpdate(jsonObj)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -228,7 +235,7 @@ export class AuditTrailApiComponent {
           });
       } else
       if (value == 5) {
-        this._apiService.logout(jsonReq)
+        this._apiService.logout(jsonObj)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -236,7 +243,7 @@ export class AuditTrailApiComponent {
           });
       } else
       if (value == 6) {
-        this._apiService.UserInfo(jsonReq)
+        this._apiService.UserInfo(jsonObj)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -244,7 +251,7 @@ export class AuditTrailApiComponent {
           });
       } else
       if (value == 7) {
-        this._apiService.userChangepwd(jsonReq)
+        this._apiService.userChangepwd(jsonObj)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -252,7 +259,7 @@ export class AuditTrailApiComponent {
           });
       } else
       if (value == 8) {
-        this._apiService.vehicleCreate(jsonReq)
+        this._apiService.vehicleCreate(jsonObj)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -271,7 +278,7 @@ export class AuditTrailApiComponent {
           });
       } else
       if (value == 11) {
-        this._apiService.vehicleEdit(jsonReq, api_token)
+        this._apiService.vehicleEdit(jsonObj, api_token)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -279,7 +286,7 @@ export class AuditTrailApiComponent {
           });
       } else
       if (value == 121) {
-        this._apiService.vehicleDelete(jsonReq, api_token)
+        this._apiService.vehicleDelete(jsonObj, api_token)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -287,7 +294,7 @@ export class AuditTrailApiComponent {
           });
       } else
       if (value == 13) {
-        this._apiService.sessionCheck(jsonReq)
+        this._apiService.sessionCheck(jsonObj)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));
@@ -295,7 +302,7 @@ export class AuditTrailApiComponent {
           });
       } else
       if (value == 14) {
-        this._apiService.sessionAll(jsonReq)
+        this._apiService.sessionAll(jsonObj)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));

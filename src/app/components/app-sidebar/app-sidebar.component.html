@@ -3,73 +3,110 @@
   <app-sidebar-form></app-sidebar-form>
   <nav class="sidebar-nav">
     <ul class="nav">
-      <li class="nav-title">
-        Dashboard
+      <li class="nav-item" *ngIf=isManagement>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/activityManagement']"><i class="icon-credit-card"></i> Activity Management </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
+      <li class="nav-item" *ngIf=isResident>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/resident/myprofile']"><i class="icon-credit-card"></i> MyProfile </a>
       </li>
-
-      <!-- hafidz : add here [START] -->
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/login']"><i class="icon-user"></i> Login </a>
+      <li class="nav-item" *ngIf=isResident>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/resident/myvehicle']"><i class="icon-credit-card"></i> MyVehicle </a>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/register']"><i class="icon-list"></i> Register </a>
+      <li class="nav-item" *ngIf=isGuest>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/guestRegistration']"><i class="icon-credit-card"></i> Guest Registration </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/profile']"><i class="icon-user"></i> Profile </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/guest-register']"><i class="icon-user"></i> Guest Registration </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/management-activity']"><i class="icon-user"></i> Activity Management </a>
-      </li>
-
-      <!-- <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/responsive']"><i class="icon-list"></i> Responsive </a>
-      </li> -->
-
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/selection']"><i class="icon-list"></i> Selection </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/charting']"><i class="icon-pie-chart"></i> Charting </a>
-      </li>
-
-      <!-- <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/table']"><i class="icon-hourglass"></i> Table </a>
-      </li> -->
-
-      <!-- <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/time']"><i class="icon-hourglass"></i> Time </a>
-      </li> -->
-
-      <!-- <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail']"><i class="icon-credit-card"></i> Audit Trail </a>
-      </li> -->
-
-      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+      <li class="nav-item nav-dropdown" *ngIf=isAuditTrail routerLinkActive="open" appNavDropdown>
         <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-handbag"></i> Audit Trails</a>
         <ul class="nav-dropdown-items">
           <li class="nav-item">
-            <!-- <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/add']"><i class="icon-plus"></i> Add</a> -->
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail/json']"><i class="icon-credit-card"></i> Audit Trail (json) </a>
           </li>
           <li class="nav-item">
-            <!-- <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/list']"><i class="icon-list"></i> List <span class="badge badge-info">1,234</span></a> -->
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail/api']"><i class="icon-credit-card"></i> Audit Trail (API) </a>
           </li>
         </ul>
       </li>
+    </ul>
 
-      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+
+
+
+    <!-- <ul class="nav"> -->
+    <!-- <li class="nav-title">
+        Dashboard
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
+      </li> -->
+
+    <!-- hafidz : add here [START] -->
+    <!-- <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/login']"><i class="icon-user"></i> Login </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/register']"><i class="icon-list"></i> Register </a>
+      </li> -->
+
+    <!-- <li class="nav-item nav-dropdown" *ngIf=isLoggedIn  routerLinkActive="open" appNavDropdown> -->
+    <!-- <li class="nav-item nav-dropdown" *ngIf=isResident routerLinkActive="open" appNavDropdown>
+      <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-handbag"></i> Resident</a>
+      <ul class="nav-dropdown-items">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/resident/profile']"><i class="icon-credit-card"></i> MyProfile </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/resident/guest']"><i class="icon-credit-card"></i> Guest Registration </a>
+        </li>
+      </ul>
+    </li> -->
+
+    <!-- <li class="nav-item nav-dropdown" *ngIf=isGuest routerLinkActive="open" appNavDropdown>
+      <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-handbag"></i> Guest</a>
+      <ul class="nav-dropdown-items">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/guest/guest']"><i class="icon-credit-card"></i> Guest Registration </a>
+        </li>
+      </ul>
+    </li> -->
+
+    <!-- <li class="nav-item nav-dropdown" *ngIf=isGuard routerLinkActive="open" appNavDropdown>
+      <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-handbag"></i> Guard</a>
+      <ul class="nav-dropdown-items">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/guard/activityManagement']"><i class="icon-credit-card"></i> Activity Management </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/guard/guest']"><i class="icon-credit-card"></i> Guest Registration </a>
+        </li>
+      </ul>
+    </li> -->
+
+    <!-- <li class="nav-item nav-dropdown" *ngIf=isManagement routerLinkActive="open" appNavDropdown>
+      <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-handbag"></i> Management</a>
+      <ul class="nav-dropdown-items">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/office/activityManagement']"><i class="icon-credit-card"></i> Activity Management </a>
+        </li>
+      </ul>
+    </li> -->
+
+    <!-- <li class="nav-item nav-dropdown" *ngIf=isAuditTrail routerLinkActive="open" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-handbag"></i> Audit Trails</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item"> -->
+    <!-- <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/add']"><i class="icon-plus"></i> Add</a> -->
+    <!-- <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail/json']"><i class="icon-credit-card"></i> Audit Trail (json) </a>
+          </li>
+          <li class="nav-item"> -->
+    <!-- <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/list']"><i class="icon-list"></i> List <span class="badge badge-info">1,234</span></a> -->
+    <!-- <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail/api']"><i class="icon-credit-card"></i> Audit Trail (API) </a>
+          </li>
+        </ul>
+      </li> -->
+
+    <!-- <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
         <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-handbag"></i> Product</a>
         <ul class="nav-dropdown-items">
           <li class="nav-item">
@@ -78,15 +115,12 @@
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/product/list']"><i class="icon-list"></i> List <span class="badge badge-info">1,234</span></a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" [routerLink]="['/audittrail/api']"><i class="icon-credit-card"></i> Audit Trail (API) </a>
-          </li> -->
         </ul>
-      </li>
+      </li> -->
 
-      <!-- hafidz : add here [END] -->
+    <!-- hafidz : add here [END] -->
 
-    </ul>
+    <!-- </ul> -->
   </nav>
   <app-sidebar-footer></app-sidebar-footer>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Http, Response } from '@angular/http';
@@ -7,13 +7,36 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
 import {Headers} from '@angular/http';
+import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
 
 @Component({
-  templateUrl: 'guest.register.component.html'
+  templateUrl: 'management.activity.component.html'
 })
-export class GuestRegisterComponent {
-
+export class ManagementActivityComponent {
+  public myModal;
+  public largeModal;
+  public smallModal;
+  public primaryModal;
+  public successModal;
+  public warningModal;
+  public dangerModal;
+  public infoModal;
   error : string;
+  
+  
+  private activities = [
+    { name: 'Vishnu Serghei', vehicleno: 'WWQ 7765', timein: '8:30am', timeout: '11:30am', Status: 'Active'},
+    { name: 'Zbyněk Phoibos', vehicleno: 'ABC 1234', timein: '10.01pm', timeout: '2:30pm', Status: 'Active'},
+    { name: 'Einar Randall', vehicleno: 'RF 1002', timein: '12.01pm', timeout: '8:30pm', Status: 'Ended'},
+    { name: 'Félix Troels', vehicleno: 'JKL 2222', timein: '2:45pm', timeout: '8:30pm', Status: 'Ended'},
+    { name: 'Aulus Agmundr', vehicleno: 'WWW 6666', timein: '4.20pm', timeout: '8:30pm', Status: 'Ended'},
+  ];
+
+  private campers = [
+    { username: 1, recent: 'POST', alltime: 'POST' },
+    { username: 2, recent: 'GET', alltime: 'POST' },
+  ];
+  defaultOptionAction = null;
 
   constructor(
     private http: Http,

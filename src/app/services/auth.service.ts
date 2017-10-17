@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-//import { JwtHelper } from 'angular2-jwt';
+import { JwtHelper } from './angular2-jwt';
 
 import { ApiService } from './api.service';
 
@@ -9,7 +9,7 @@ export class AuthService {
   loggedIn = false;
   isAdmin = false;
 
-  //jwtHelper: JwtHelper = new JwtHelper();
+  jwtHelper: JwtHelper = new JwtHelper();
 
   currentUser = { _id: '', username: '', role: '' };
 
@@ -29,7 +29,11 @@ export class AuthService {
         var data = response["_body"];
         localStorage.setItem("user", JSON.stringify(data));
         console.log("response = " + data);
+        
         var obj = JSON.parse(data);
+        console.log("response.token = " + obj.api_token);
+        //const decodedUser = this.decodeUserFromToken(obj.api_token);
+        this.setCurrentUser(obj);
         return obj;
       });
   }
@@ -48,6 +52,16 @@ export class AuthService {
     } else {
       console.log("user exist");
     }
+  }
+
+  setCurrentUser(obj) {
+    this.loggedIn = true;
+    this.currentUser._id = obj._id;
+    this.currentUser.username = obj.username;
+    this.currentUser.role = obj.role;
+    console.log("currentUser : " + this.currentUser._id + " " + this.currentUser.username + " " + this.currentUser.role)
+    obj.role === 'admin' ? this.isAdmin = true : this.isAdmin = false;
+    //delete decodedUser.role;
   }
 
   // login(emailAndPassword) {
@@ -71,17 +85,18 @@ export class AuthService {
   //   this.router.navigate(['/']);
   // }
 
-  //   decodeUserFromToken(token) {
-  //     return this.jwtHelper.decodeToken(token).user;
-  //   }
+    // decodeUserFromToken(token) {
+    //   return this.jwtHelper.decodeToken(token).user;
+    // }
 
-  setCurrentUser(decodedUser) {
-    this.loggedIn = true;
-    this.currentUser._id = decodedUser._id;
-    this.currentUser.username = decodedUser.username;
-    this.currentUser.role = decodedUser.role;
-    decodedUser.role === 'admin' ? this.isAdmin = true : this.isAdmin = false;
-    delete decodedUser.role;
-  }
+  // setCurrentUser(decodedUser) {
+  //   this.loggedIn = true;
+  //   this.currentUser._id = decodedUser._id;
+  //   this.currentUser.username = decodedUser.username;
+  //   this.currentUser.role = decodedUser.role;
+  //   console.log("currentUser : " + this.currentUser._id + " " + this.currentUser.username + " " + this.currentUser.role)
+  //   decodedUser.role === 'admin' ? this.isAdmin = true : this.isAdmin = false;
+  //   delete decodedUser.role;
+  // }
 
 }

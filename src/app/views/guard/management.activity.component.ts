@@ -8,11 +8,14 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
 import {Headers} from '@angular/http';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
+import { AuthJsonService } from './../../services/auth.service.json';
 
 @Component({
+  providers: [AuthJsonService],
   templateUrl: 'management.activity.component.html'
 })
 export class ManagementActivityComponent {
+  private pageHeaderName = "ActivityManagement";
   public myModal;
   public largeModal;
   public smallModal;
@@ -41,10 +44,20 @@ export class ManagementActivityComponent {
   constructor(
     private http: Http,
     private _router: Router,
+    private _service: AuthJsonService
   ) {
 
   }
 
+  ngOnInit() {
+    this._service.checkRole(this.pageHeaderName)
+      .subscribe(response => {
+        if (!response) {
+          this._router.navigate(['']);
+        }
+      });
+  }
+  
   backClicked() {
     console.log("back click");
     this._router.navigate(['login']);

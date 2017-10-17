@@ -1,0 +1,164 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-10" style="min-width: 400px; max-width:700px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-8">
+              <strong>MyProfile</strong>
+              <small>Details</small>
+            </div>
+            <div class="col-4">
+              <button type="button" class="btn btn-primary btn-sm" style="float:right;" (click)="editProfileModal.show()"><i class="icon-pencil"></i>&nbsp; Edit</button>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <form #profileForm="ngForm" (ngSubmit)="onSubmit(profileForm)">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 " align="center">
+                <!-- <img alt="User Pic" src="./assets/img/avatars/user_default.png" class="img-circle img-responsive"> -->
+                <img alt="User Pic" src="./assets/img/avatars/5.jpg" class="img-circle img-responsive" style="width:150px; height:150px;">
+                <div style="margin-top:5px;">
+                  <button type="button" class="btn btn-primary btn-sm" (click)="editProfileModal.show()"><i class="icon-camera"></i>&nbsp; Edit</button>
+                </div>
+
+              </div>
+              <div class=" col-md-9 col-lg-9 ">
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <td>Name :</td>
+                      <td>{{userName}}</td>
+                    </tr>
+                    <tr>
+                      <td>IC/Passport No :</td>
+                      <td>{{identificationNo}}</td>
+                    </tr>
+                    <tr>
+                      <td>House/Unit No :</td>
+                      <td>{{houseNo}}</td>
+                    </tr>
+                    <tr>
+                      <td>Home Address :</td>
+                      <td>{{address_1}}<br><br>{{address_2}}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td><a href="mailto:info@support.com">{{email}}</a></td>
+                    </tr>
+                    <tr>
+                      <td>Phone Number</td>
+                      <td>{{phone_home}}&nbsp;(Home)<br><br>{{phone_mobile}}&nbsp;(Mobile)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- <div class="form-group row">
+                      <label class="col-md-3 form-control-label text-right">Name : </label>
+                      <div class="col-md-9">
+                        <p class="form-control-static">shariman{{name}}</p>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label text-right">House No : </label>
+                      <div class="col-md-9">
+                        <p class="form-control-static">house_no{{house_no}}</p>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label text-right">Address : </label>
+                      <div class="col-md-9">
+                        <p class="form-control-static">address_first{{address_first}}</p>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-9">
+                        <p class="form-control-static">address_second{{address_second}}</p>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label text-right">Phone No (Home) : </label>
+                      <div class="col-md-9">
+                        <p class="form-control-static">+601-2345678{{Phone_home_no}}</p>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label text-right">Phone No (Mobile) : </label>
+                      <div class="col-md-9">
+                        <p class="form-control-static">+6012-3456789{{Phone_mobile_no}}</p>
+                      </div>
+                    </div> -->
+
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #editProfileModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><i class="icon-pencil"></i>&nbsp; Edit MyProfile</h4>
+        <button type="button" class="close" (click)="editProfileModal.hide()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="city">FirstName</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your Name" [(ngModel)]="firstName">
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="postal-code">LastName</label>
+            <input type="text" class="form-control" id="house_no" placeholder="House No" [(ngModel)]="lastName">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label for="city">IC/Passport No</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your Name" [(ngModel)]="identificationNo">
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="postal-code">House No</label>
+            <input type="text" class="form-control" id="house_no" placeholder="House No" [(ngModel)]="houseNo">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="vat">Address</label>
+          <input type="text" class="form-control" id="address" placeholder="address" [(ngModel)]="address_1">
+        </div>
+        <div class="form-group">
+          <label for="street">Street</label>
+          <input type="text" class="form-control" id="street" placeholder="Enter street name" [(ngModel)]="address_2">
+        </div>
+        <div class="form-group">
+          <label for="city">Email</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your Name" [(ngModel)]="email">
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="city">Phone No (Home)</label>
+            <input type="text" class="form-control" id="phone_no_home" placeholder="+601 2345678">
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="postal-code">(Mobile)</label>
+            <input type="text" class="form-control" id="phone_no_mobile" placeholder="+6012 3456789">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="editProfileModal.hide()">Close</button>
+        <button type="button" class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

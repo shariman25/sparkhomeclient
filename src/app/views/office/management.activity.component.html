@@ -62,7 +62,7 @@
         <div class="row">
           <div class="col-8 h1 text-muted text-left">
             <!-- <div class="h1 text-muted text-right mb-4"> -->
-              <i class="icon-speedometer"></i>
+            <i class="icon-speedometer"></i>
 
             <!-- </div> -->
           </div>
@@ -122,39 +122,49 @@
 <!-- /.modal -->
 
 <div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-warning" role="document">
+  <div class="modal-dialog modal-primary" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Guest Edit</h4>
+        <h4 class="modal-title"><i class="fa fa-car"></i>&nbsp; Add Guest</h4>
         <button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
       </div>
       <div class="modal-body">
-        <p>Guest Vehicle Details Edit.</p>
-        <div class="input-group mb-3">
-          <span class="input-group-addon"><i class="icon-user"></i></span>
-          <input type="text" class="form-control" placeholder="First Name" name="first_name" ngModel>
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label for="city">Guest Name </label>
+            <input type="text" class="form-control" id="guest_name" placeholder="Enter your name">
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="postal-code">Vehicle No</label>
+            <input type="text" class="form-control" id="vehicle_no" placeholder="Vehicle No">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label for="city">Phone No </label>
+            <input type="text" class="form-control" id="phone_no" placeholder="+6012...">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label for="ccyear">Status</label>
+            <select class="form-control form-control-sm" id="status">
+                    <option>Please select</option>
+                      <option>Visitor</option>
+                      <option>Drop Off</option>
+                      <option>Pick Up</option>
+                      <option>OverNight</option>
+                      <option>Contractor</option>
+                    </select>
+          </div>
         </div>
 
-        <div class="input-group mb-3">
-          <span class="input-group-addon"><i class="icon-user"></i></span>
-          <input type="text" class="form-control" placeholder="Last Name" name="last_name" ngModel>
-        </div>
-
-        <div class="input-group mb-3">
-          <span class="input-group-addon"><i class="icon-home"></i></span>
-          <input type="text" class="form-control" placeholder="House No" name="house_no" ngModel>
-        </div>
-
-        <div class="input-group mb-3">
-          <span class="input-group-addon"><i class="fa fa-car"></i></span>
-          <input type="text" class="form-control" placeholder="Car No" name="car_no" ngModel>
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="editModal.hide()">Close</button>
-        <button type="button" class="btn btn-warning">Save changes</button>
+        <button type="button" class="btn btn-primary">Add</button>
       </div>
     </div>
     <!-- /.modal-content -->

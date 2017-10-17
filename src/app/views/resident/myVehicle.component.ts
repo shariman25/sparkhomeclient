@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Http, Response } from '@angular/http';
@@ -7,12 +7,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
 import {Headers} from '@angular/http';
-import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
+import { AuthJsonService } from './../../services/auth.service.json';
 
 @Component({
-  templateUrl: 'management.activity.component.html'
+  providers: [AuthJsonService],
+  templateUrl: 'myVehicle.component.html'
 })
-export class ManagementActivityComponent {
+export class MyVehicleComponent {
+  private pageHeaderName = "MyVehicle";
   public myModal;
   public largeModal;
   public smallModal;
@@ -22,27 +24,30 @@ export class ManagementActivityComponent {
   public dangerModal;
   public infoModal;
   error : string;
-  
-  
-  private activities = [
-    { name: 'Vishnu Serghei', vehicleno: 'WWQ 7765', timein: '8:30am', Status: 'Active'},
-    { name: 'Zbyněk Phoibos', vehicleno: 'ABC 1234', timein: '10.01pm', Status: 'Banned'},
-    { name: 'Einar Randall', vehicleno: 'RF 1002', timein: '12.01pm', Status: 'Inactive'},
-    { name: 'Félix Troels', vehicleno: 'JKL 2222', timein: '2:45pm', Status: 'TimeOver'},
-    { name: 'Aulus Agmundr', vehicleno: 'WWW 6666', timein: '4.20pm', Status: 'TimeOver'},
-  ];
 
-  private campers = [
-    { username: 1, recent: 'POST', alltime: 'POST' },
-    { username: 2, recent: 'GET', alltime: 'POST' },
+  private vehicleRegs = [
+    { ownername: 'Vishnu Serghei', vehicleno: 'WWQ 7765', model: 'BMW X3', color: 'White'},
+    { ownername: 'Zbyněk Phoibos', vehicleno: 'ABC 1234', model: 'Mercedes C250', color: 'Black'},
+    { ownername: 'Einar Randall', vehicleno: 'RF 1002', model: 'Proton Perdana', color: 'Blue'},
+    { ownername: 'Félix Troels', vehicleno: 'JKL 2222', model: 'Produa Myvi', color: 'Silver'},
+    { ownername: 'Aulus Agmundr', vehicleno: 'WWW 6666', model: 'Toyota Vios', color: 'Orange'},
   ];
-  defaultOptionAction = null;
 
   constructor(
     private http: Http,
     private _router: Router,
+    private _service: AuthJsonService
   ) {
 
+  }
+
+  ngOnInit() {
+    this._service.checkRole(this.pageHeaderName)
+      .subscribe(response => {
+        if (!response) {
+          this._router.navigate(['']);
+        }
+      });
   }
 
   backClicked() {

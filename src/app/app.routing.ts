@@ -47,49 +47,69 @@ export const routes: Routes = [
         loadChildren: './views/register/register.module#RegisterModule'
       },
       {
-        path: 'profile',
-        loadChildren: './views/resident/profile/profile.module#ProfileModule'
+        path: 'resident',
+        loadChildren: './views/resident/resident.module#ResidentModule'
       },
       {
-        path: 'guest-register',
-        loadChildren: './views/resident/guest-register/guest.register.module#GuestRegisterModule'
+        path: 'guard',
+        loadChildren: './views/guard/guard.module#GuardModule'
       },
       {
-        path: 'management-activity',
-        loadChildren: './views/management/activity/management.activity.module#ManagementActivityModule'
+        path: 'office',
+        loadChildren: './views/office/office.module#OfficeModule'
       },
       {
-        path: 'responsive',
-        loadChildren: './views/demo/responsive/responsive.module#ResponsiveModule'
+        path: 'activityManagement',
+        loadChildren: './views/management/management.activity.module#ManagementActivityModule'
       },
       {
-        path: 'selection',
-        loadChildren: './views/demo/selection/selection.module#SelectionModule'
+        path: 'guestRegistration',
+        loadChildren: './views/guest/guest.module#GuestModule'
       },
-      {
-        path: 'charting',
-        loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
-      },
-      {
-        path: 'table',
-        loadChildren: './views/demo/table/table.module#TableModule'
-      },
-      {
-        path: 'time',
-        loadChildren: './views/time/time.module#TimeModule'
-      },
+      // {
+      //   path: 'profile',
+      //   loadChildren: './views/resident/profile/profile.module#ProfileModule'
+      // },
+      // {
+      //   path: 'guest-register',
+      //   loadChildren: './views/resident/guest-register/guest.register.module#GuestRegisterModule'
+      // },
+      // {
+      //   path: 'management-activity',
+      //   loadChildren: './views/management/activity/management.activity.module#ManagementActivityModule'
+      // },
+      // {
+      //   path: 'responsive',
+      //   loadChildren: './views/demo/responsive/responsive.module#ResponsiveModule'
+      // },
+      // {
+      //   path: 'selection',
+      //   loadChildren: './views/demo/selection/selection.module#SelectionModule'
+      // },
+      // {
+      //   path: 'charting',
+      //   loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
+      // },
+      // {
+      //   path: 'table',
+      //   loadChildren: './views/demo/table/table.module#TableModule'
+      // },
+      // {
+      //   path: 'time',
+      //   loadChildren: './views/time/time.module#TimeModule'
+      // },
       {
         path: 'audittrail',
         loadChildren: './views/audittrails/audittrail.module#AuditTrailModule'
-      },
-      {
-        path: 'dynamic',
-        loadChildren: './templates/dynamic/dynamic.module#DynamicModule'
-      },
-      {
-        path: '',
-        loadChildren: './views/product/product.module#ProductModule'
       }
+      // {
+      //   path: 'dynamic',
+      //   loadChildren: './templates/dynamic/dynamic.module#DynamicModule'
+      // },
+      // {
+      //   path: '',
+      //   loadChildren: './views/product/product.module#ProductModule'
+      // }
       // hafidz : add here [END]
 
     ]

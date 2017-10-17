@@ -7,19 +7,37 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
 import {Headers} from '@angular/http';
+import { AuthJsonService } from './../../services/auth.service.json';
 
 @Component({
-  templateUrl: 'profile.component.html'
+  providers: [AuthJsonService],
+  templateUrl: 'guest.reg.component.html'
 })
-export class ProfileComponent {
-
+export class GuestRegComponent {
+  private pageHeaderName = "Guest";
   error : string;
+
+  private guestRegs = [
+    { guestname: 'Vishnu Serghei', vehicleno: 'WWQ 7765', phoneno: '012 1234567', timein: '8.30am', status: 'Visitor'},
+    { guestname: 'Zbyněk Phoibos', vehicleno: 'ABC 1234', phoneno: '019 8765432', timein: '2.15pm', status: 'OverNight'},
+    { guestname: 'Einar Randall', vehicleno: 'RF 1002', phoneno: '012 1234567', timein: '5.45pm', status: 'OverNight'},
+  ];
 
   constructor(
     private http: Http,
     private _router: Router,
+    private _service: AuthJsonService
   ) {
 
+  }
+
+  ngOnInit() {
+    this._service.checkRole(this.pageHeaderName)
+      .subscribe(response => {
+        if (!response) {
+          this._router.navigate(['']);
+        }
+      });
   }
 
   backClicked() {

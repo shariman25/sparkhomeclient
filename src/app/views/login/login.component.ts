@@ -6,9 +6,9 @@ import { RequestOptions, Request, RequestMethod } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 //import { Observable } from 'rxjs';
-import {Headers} from '@angular/http';
-import {AuthenticationService} from './../../auth/authentication.service';
-import {httpApiService} from './../../http/http.api.service';
+import { Headers } from '@angular/http';
+import { AuthenticationService } from './../../auth/authentication.service';
+import { httpApiService } from './../../http/http.api.service';
 import { Observable } from 'rxjs/Rx';
 
 import { AuthService } from './../../services/auth.service';
@@ -16,25 +16,36 @@ import { AuthService } from './../../services/auth.service';
 import { AuthJsonService } from './../../services/auth.service.json';
 import { ApiJsonService } from './../../services/api.service.json';
 
+//import { AppSidebar } from './../../components/app-sidebar/app-sidebar.component';
+
 
 
 
 @Component({
   selector: 'login-form',
-  providers: [AuthenticationService, httpApiService, AuthService, ApiJsonService, AuthJsonService],
+  providers: [
+    AuthenticationService,
+    httpApiService,
+    AuthService,
+    ApiJsonService,
+    AuthJsonService
+  ],
   templateUrl: 'login.component.html'
 })
 export class LoginComponent {
 
-  error : any;
-  jsonObj : string;
-  
+  error: any;
+  jsonObj: string;
+
+  currentUser = { _id: '', username: '', role: '' };
+
   constructor(
-    private _authService:AuthenticationService,
-    private _auth: AuthService,
-    //private _auth: AuthJsonService,
+    private _authService: AuthenticationService,
+    //private _auth: AuthService,
+    private _auth: AuthJsonService,
     private _router: Router
-  ) {}
+    //private _appSidebar: AppSidebar
+  ) { }
   // constructor(private http: Http) {
 
   // }
@@ -43,36 +54,36 @@ export class LoginComponent {
   login(form: NgForm) {
     let json;
     this._auth.login(form.value)
-      .map((response:any) => json = response)
-      .subscribe(data =>{
-        if(data.status != null){
+      .map((response: any) => json = response)
+      .subscribe(data => {
+        if (data.status != null) {
           console.log("login failed = " + data.status);
           this.error = 'Invalid Credential';
-        }else if(data.id > 0){
-          console.log("login success with id = " 
+        } else if (data.id > 0) {
+          console.log("login success with id = "
             + data.id + " "
             + data.first_name + " "
             + data.email);
-            this._router.navigate(['']); 
+          this._router.navigate(['']);
         }
-        
+
       },
       error => {
         console.log(error)
-    });
-    
-      //error => this.error = 'Failed to login'
+      });
+
+    //error => this.error = 'Failed to login'
     //);
   }
 
   onSubmit(form: NgForm) {
 
-    
+
 
     //TODO : validation
     // call authentication service
     var jsonReq = JSON.stringify(form.value);
-    
+
     // this.videoserv.getvideos(jsonReq)
     // .subscribe();//responce => this.videos = responce);
 
@@ -81,10 +92,10 @@ export class LoginComponent {
 
 
     var authenticated = this._authService.login(jsonReq);
-    if(!authenticated){
+    if (!authenticated) {
       console.log("login success");
-    }else{
-      console.log("Failed to login"); 
+    } else {
+      console.log("Failed to login");
       this.error = 'Failed to login';
     }
 
@@ -105,22 +116,22 @@ export class LoginComponent {
     //   //  console.log("json = " + json);
     //   //  this._router.navigate(['']); 
     //   //}
-      
+
     // );
 
-      console.log("json finish");
-      
+    console.log("json finish");
+
 
     //console.log("login json  = " + json);
     // if(!this._authService.login(jsonReq)){
     //   console.log("Failed to login"); 
     //     this.error = 'Failed to login';
     // }
-    
+
 
     // call API
     // let headers = new Headers({ 'Content-Type': 'application/json' });
-    
+
     // let options = new RequestOptions({ headers: headers });
 
 
@@ -140,7 +151,7 @@ export class LoginComponent {
     //   this.error = obj.fail_reason;
     // });
 
-    
+
 
 
   }

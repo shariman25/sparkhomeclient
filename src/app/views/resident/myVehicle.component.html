@@ -1,0 +1,218 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-6" style="min-width: 400px; max-width:700px;">
+            <div class="card" style="width:700px;">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-8">
+                            <strong>Vehicle Registraion</strong>
+                            <small>Details</small>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-primary btn-sm" style="float:right;" (click)="addVehicleModal.show()">+<i class="fa fa-car" ></i>&nbsp; Add</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <form #vehicleRegForm="ngForm" (ngSubmit)="onSubmit(vehicleRegForm)">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Owner Name</th>
+                                    <th>Vehicle No</th>
+                                    <th>Model</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let vehicleReg of vehicleRegs">
+                                    <td>{{vehicleReg.ownername}}</td>
+                                    <td>{{vehicleReg.vehicleno}}</td>
+                                    <td>{{vehicleReg.model}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" style="width:50px;" data-toggle="modal" (click)="removeVehicleModal.show()">-&nbsp;<i class="fa fa-car" ></i></button>
+                                        <button type="button" class="btn btn-warning btn-sm" style="width:50px;" data-toggle="modal" (click)="removeVehicleModal.show()">&nbsp;<i class="fa fa-pencil" ></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <nav>
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #editProfileModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="icon-pencil"></i>&nbsp; Edit MyProfile</h4>
+                <button type="button" class="close" (click)="editProfileModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-sm-8">
+                        <label for="city">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your Name">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="postal-code">House No</label>
+                        <input type="text" class="form-control" id="house_no" placeholder="House No">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="vat">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="address">
+                </div>
+                <div class="form-group">
+                    <label for="street">Street</label>
+                    <input type="text" class="form-control" id="street" placeholder="Enter street name">
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-8">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" placeholder="Enter your city">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="postal-code">Postal Code</label>
+                        <input type="text" class="form-control" id="postal_code" placeholder="Postal Code">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="city">Phone No (Home)</label>
+                        <input type="text" class="form-control" id="phone_no_home" placeholder="+601 2345678">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="postal-code">(Mobile)</label>
+                        <input type="text" class="form-control" id="phone_no_mobile" placeholder="+6012 3456789">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="editProfileModal.hide()">Close</button>
+                <button type="button" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div bsModal #addVehicleModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fa fa-car"></i>&nbsp; Add Vehicle</h4>
+                <button type="button" class="close" (click)="addVehicleModal.hide()" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-sm-8">
+                        <label for="city">Owner Name </label>
+                        <input type="text" class="form-control" id="city" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="postal-code">Vehicle No</label>
+                        <input type="text" class="form-control" id="postal-code" placeholder="Vehicle No">
+                    </div>
+                </div>
+                <!--/.row-->
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <label for="ccmonth">Brand</label>
+                        <select class="form-control form-control-sm" id="brand">
+                      <option>Please select</option>
+                        <option>BMW</option>
+                        <option>Mercedes</option>
+                        <option>Proton</option>
+                        <option>Perodua</option>
+                        <option>Toyota</option>
+                        <option>Honda</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="ccyear">Model</label>
+                        <select class="form-control form-control-sm" id="model">
+                      <option>Please select</option>
+                        <option>X3</option>
+                        <option>Myvi</option>
+                        <option>Persona</option>
+                        <option>C200</option>
+                        <option>Viva</option>
+                        <option>kancil</option>
+                        <option>Vios</option>
+                        <option>City</option>
+                        <option>Accord</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="cvv">Color</label>
+                            <select class="form-control form-control-sm" id="color">
+                        <option>Please select</option>
+                        <option>White</option>
+                        <option>Black</option>
+                        <option>Blue</option>
+                        <option>Red</option>
+                        <option>Orange</option>
+                        <option>Purple</option>
+                      </select>
+                        </div>
+                    </div>
+                </div>
+                <!--/.row-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="addVehicleModal.hide()">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div bsModal #removeVehicleModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-danger" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fa fa-car"></i>&nbsp; Remove Vehicle</h4>
+                <button type="button" class="close" (click)="removeVehicleModal.hide()" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure want to remove this vehicle?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="removeVehicleModal.hide()">No</button>
+                <button type="button" class="btn btn-danger">Yes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

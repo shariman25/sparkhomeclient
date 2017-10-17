@@ -10,13 +10,14 @@ import { Headers } from '@angular/http';
 
 import { InputService } from './../../services/input.service';
 import { ApiJsonService } from './../../services/api.service.json';
+import { AuthJsonService } from './../../services/auth.service.json';
 
 @Component({
   templateUrl: 'audittrail.json.component.html',
-  providers: [InputService, ApiJsonService]
+  providers: [InputService, ApiJsonService, AuthJsonService]
 })
 export class AuditTrailJsonComponent {
-
+  private pageHeaderName = "AuditTrail";
   error: string;
   private jsonSend: string;
   private jsonReceive: string;
@@ -51,10 +52,16 @@ export class AuditTrailJsonComponent {
     private _router: Router,
     private _inputService: InputService,
     private _apiService: ApiJsonService,
+    private _service: AuthJsonService
   ) { }
 
   ngOnInit() {
-    //this.jsonSend = "lololo";
+    this._service.checkRole(this.pageHeaderName)
+      .subscribe(response => {
+        if (!response) {
+          this._router.navigate(['']);
+        }
+      });
   }
 
 
@@ -211,7 +218,8 @@ export class AuditTrailJsonComponent {
         //profile upload
       } else
       if (value == 4) {
-        this._apiService.login_success()
+        var obj = JSON.parse(form.value.select_api);
+        this._apiService.login_success(obj.email)
           .map((response: any) => json = response)
           .subscribe(data => {
             console.log("res : " + JSON.stringify(json));

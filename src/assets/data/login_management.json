@@ -3,7 +3,7 @@
         "id": 1,
         "first_name": "John",
         "last_name": "Doe",
-        "email": "admin@test.com",
+        "email": "management@test.com",
         "identification": null,
         "address": null,
         "mobile": null,
@@ -12,7 +12,7 @@
         "profile_photo": null,
         "lpid": null,
         "api_token": "o7KODzJjF5oc0E71VSsDqe1zUDNl5YcOlEvnmWOdk4MBGNwCcn4eKtWSiwLD",
-        "role": "admin",
+        "role": "management",
         "credit": {
             "amount": 0,
             "points": 0

@@ -1,0 +1,14 @@
+{
+	"admin":[
+        "AuditTrail",
+        "ActivityManagement"
+        ],
+    "management":[
+        "ActivityManagement"
+        ],
+    "resident":[
+        "MyProfile",
+        "MyVehicle",
+        "GuestRegistration"
+        ]
+}

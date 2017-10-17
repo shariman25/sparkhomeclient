@@ -15,7 +15,7 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent { 
   constructor(
-    private _service:AuthService){}
+    private _service:AuthJsonService){}
 
   ngOnInit(){
       this._service.checkCredentials();

@@ -15,6 +15,7 @@
                   <th>Guest Name</th>
                   <th>Vehicle No</th>
                   <th>Time-In</th>
+                  <th>Time-Out</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -24,6 +25,7 @@
                   <td>{{activity.name}}</td>
                   <td>{{activity.vehicleno}}</td>
                   <td>{{activity.timein}}</td>
+                  <td>{{activity.timeout}}</td>
                   <td>{{activity.Status}}</td>
                   <td>
                     <button type="button" class="btn btn-primary btn-sm" style="width:100px;" data-toggle="modal" (click)="infoModal.show()"><i class="icon-user"></i> info</button>

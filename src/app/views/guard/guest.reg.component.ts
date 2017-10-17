@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Http, Response } from '@angular/http';
@@ -7,42 +7,37 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
 import {Headers} from '@angular/http';
-import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
+import { AuthJsonService } from './../../services/auth.service.json';
 
 @Component({
-  templateUrl: 'management.activity.component.html'
+  templateUrl: 'guest.reg.component.html',
+  providers: [AuthJsonService]
 })
-export class ManagementActivityComponent {
-  public myModal;
-  public largeModal;
-  public smallModal;
-  public primaryModal;
-  public successModal;
-  public warningModal;
-  public dangerModal;
-  public infoModal;
+export class GuestRegComponent {
+  private pageHeaderName = "Guest";
   error : string;
-  
-  
-  private activities = [
-    { name: 'Vishnu Serghei', vehicleno: 'WWQ 7765', timein: '8:30am', Status: 'Active'},
-    { name: 'Zbyněk Phoibos', vehicleno: 'ABC 1234', timein: '10.01pm', Status: 'Banned'},
-    { name: 'Einar Randall', vehicleno: 'RF 1002', timein: '12.01pm', Status: 'Inactive'},
-    { name: 'Félix Troels', vehicleno: 'JKL 2222', timein: '2:45pm', Status: 'TimeOver'},
-    { name: 'Aulus Agmundr', vehicleno: 'WWW 6666', timein: '4.20pm', Status: 'TimeOver'},
-  ];
 
-  private campers = [
-    { username: 1, recent: 'POST', alltime: 'POST' },
-    { username: 2, recent: 'GET', alltime: 'POST' },
+  private guestRegs = [
+    { guestname: 'Vishnu Serghei', vehicleno: 'WWQ 7765', phoneno: '012 1234567', timein: '8.30am', status: 'Visitor'},
+    { guestname: 'Zbyněk Phoibos', vehicleno: 'ABC 1234', phoneno: '019 8765432', timein: '2.15pm', status: 'OverNight'},
+    { guestname: 'Einar Randall', vehicleno: 'RF 1002', phoneno: '012 1234567', timein: '5.45pm', status: 'OverNight'},
   ];
-  defaultOptionAction = null;
 
   constructor(
     private http: Http,
     private _router: Router,
+    private _service: AuthJsonService
   ) {
 
+  }
+
+  ngOnInit() {
+    this._service.checkRole(this.pageHeaderName)
+      .subscribe(response => {
+        if (!response) {
+          this._router.navigate(['']);
+        }
+      });
   }
 
   backClicked() {

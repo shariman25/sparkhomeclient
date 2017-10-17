@@ -6,13 +6,17 @@ import { RequestOptions, Request, RequestMethod } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
-import {Headers} from '@angular/http';
+import { Headers } from '@angular/http';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
+import { AuthJsonService } from './../../services/auth.service.json';
 
 @Component({
+  providers: [AuthJsonService],
   templateUrl: 'management.activity.component.html'
+
 })
 export class ManagementActivityComponent {
+  private pageHeaderName = "ActivityManagement";
   public myModal;
   public largeModal;
   public smallModal;
@@ -21,15 +25,15 @@ export class ManagementActivityComponent {
   public warningModal;
   public dangerModal;
   public infoModal;
-  error : string;
-  
-  
+  error: string;
+
+
   private activities = [
-    { name: 'Vishnu Serghei', vehicleno: 'WWQ 7765', timein: '8:30am', Status: 'Active'},
-    { name: 'Zbyněk Phoibos', vehicleno: 'ABC 1234', timein: '10.01pm', Status: 'Banned'},
-    { name: 'Einar Randall', vehicleno: 'RF 1002', timein: '12.01pm', Status: 'Inactive'},
-    { name: 'Félix Troels', vehicleno: 'JKL 2222', timein: '2:45pm', Status: 'TimeOver'},
-    { name: 'Aulus Agmundr', vehicleno: 'WWW 6666', timein: '4.20pm', Status: 'TimeOver'},
+    { name: 'Vishnu Serghei', vehicleno: 'WWQ 7765', timein: '8:30am', Status: 'Active' },
+    { name: 'Zbyněk Phoibos', vehicleno: 'ABC 1234', timein: '10.01pm', Status: 'Banned' },
+    { name: 'Einar Randall', vehicleno: 'RF 1002', timein: '12.01pm', Status: 'Inactive' },
+    { name: 'Félix Troels', vehicleno: 'JKL 2222', timein: '2:45pm', Status: 'TimeOver' },
+    { name: 'Aulus Agmundr', vehicleno: 'WWW 6666', timein: '4.20pm', Status: 'TimeOver' },
   ];
 
   private campers = [
@@ -41,8 +45,18 @@ export class ManagementActivityComponent {
   constructor(
     private http: Http,
     private _router: Router,
+    private _service: AuthJsonService
   ) {
 
+  }
+
+  ngOnInit() {
+    this._service.checkRole(this.pageHeaderName)
+      .subscribe(response => {
+        if (!response) {
+          this._router.navigate(['']);
+        }
+      });
   }
 
   backClicked() {
@@ -52,7 +66,7 @@ export class ManagementActivityComponent {
 
   onSubmit(form: NgForm) {
 
-    
+
 
     //TODO : validation
 
@@ -66,7 +80,7 @@ export class ManagementActivityComponent {
 
     console.log("json req = " + jsonReq);
 
-    const req = this.http.post('http://localhost/api/user/create', jsonReq,options);
+    const req = this.http.post('http://localhost/api/user/create', jsonReq, options);
     req.subscribe(data => {
       var json = data["_body"];
       console.log("json = " + json);

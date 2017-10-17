@@ -9,7 +9,8 @@ export class ApiService {
 
   private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
   private options = new RequestOptions({ headers: this.headers });
-  private domainUrl = "http://localhost:8000";
+  //private domainUrl = "http://localhost:8000";
+  private domainUrl = "https://plug.gospark.my"
 
   constructor(private http: Http) { }
 

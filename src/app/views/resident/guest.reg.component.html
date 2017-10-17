@@ -1,0 +1,136 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6" style="min-width: 400px; max-width:700px;">
+      <div class="card" style="width:700px;">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-8">
+              <strong>Guest Vehicle Registraion</strong>
+              <small>Details</small>
+            </div>
+            <div class="col-4">
+              <button type="button" class="btn btn-primary btn-sm" style="float:right;" (click)="addVehicleModal.show()">+<i class="fa fa-car" ></i>&nbsp; Add</button>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <form #vehicleRegForm="ngForm" (ngSubmit)="onSubmit(vehicleRegForm)">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Guest Name</th>
+                  <th>Vehicle No</th>
+                  <th>Phone No</th>
+                  <th>Time-In</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let guestReg of guestRegs">
+                  <td>{{guestReg.guestname}}</td>
+                  <td>{{guestReg.vehicleno}}</td>
+                  <td>{{guestReg.phoneno}}</td>
+                  <td>{{guestReg.timein}}</td>
+                  <td>{{guestReg.status}}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger btn-sm" style="width:100px;" data-toggle="modal" (click)="removeVehicleModal.show()">-&nbsp;<i class="fa fa-car" ></i> Remove</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <nav>
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #addVehicleModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><i class="fa fa-car"></i>&nbsp; Add Guest</h4>
+        <button type="button" class="close" (click)="addVehicleModal.hide()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label for="city">Guest Name </label>
+            <input type="text" class="form-control" id="guest_name" placeholder="Enter your name">
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="postal-code">Vehicle No</label>
+            <input type="text" class="form-control" id="vehicle_no" placeholder="Vehicle No">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label for="city">Phone No </label>
+            <input type="text" class="form-control" id="phone_no" placeholder="+6012...">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label for="ccyear">Status</label>
+            <select class="form-control form-control-sm" id="status">
+                <option>Please select</option>
+                  <option>Visitor</option>
+                  <option>Drop Off</option>
+                  <option>Pick Up</option>
+                  <option>OverNight</option>
+                  <option>Contractor</option>
+                </select>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVehicleModal.hide()">Close</button>
+        <button type="button" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div bsModal #removeVehicleModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-danger" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><i class="fa fa-car"></i>&nbsp; Remove Guest</h4>
+        <button type="button" class="close" (click)="removeVehicleModal.hide()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure want to remove this Guest?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="removeVehicleModal.hide()">No</button>
+        <button type="button" class="btn btn-danger">Yes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

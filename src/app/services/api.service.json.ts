@@ -24,7 +24,7 @@ export class ApiJsonService {
     public create_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "create_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -32,7 +32,7 @@ export class ApiJsonService {
     public update_success(): Observable<any> {
         return this.http.get(this.assestUrl + "update_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -45,18 +45,39 @@ export class ApiJsonService {
             .catch((error: any) => error);
     }
 
-    public login_success(): Observable<any> {
-        return this.http.get(this.assestUrl + "login_Success.json")
+    public login_success(email): Observable<any> {
+        console.log("email : " + email)
+        if (email === 'admin@test.com') {
+            return this.http.get(this.assestUrl + "login_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
+        } else if (email === 'resident@test.com') {
+            return this.http.get(this.assestUrl + "login_resident.json")
+            .map((response: Response) => {
+                return response.json();
+            })
+            .catch((error: any) => error);
+        } else if (email === 'management@test.com') {
+            return this.http.get(this.assestUrl + "login_management.json")
+            .map((response: Response) => {
+                return response.json();
+            })
+            .catch((error: any) => error);
+        } else if (email === 'guard@test.com') {
+            return this.http.get(this.assestUrl + "login_guard.json")
+            .map((response: Response) => {
+                return response.json();
+            })
+            .catch((error: any) => error);
+        }
     }
 
     public login_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "login_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -64,7 +85,7 @@ export class ApiJsonService {
     public logout_Success(): Observable<any> {
         return this.http.get(this.assestUrl + "logout_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -72,7 +93,7 @@ export class ApiJsonService {
     public info_success(): Observable<any> {
         return this.http.get(this.assestUrl + "info_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -80,7 +101,7 @@ export class ApiJsonService {
     public info_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "info_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -88,7 +109,7 @@ export class ApiJsonService {
     public changepwd_success(): Observable<any> {
         return this.http.get(this.assestUrl + "changepwd_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -96,7 +117,7 @@ export class ApiJsonService {
     public changepwd_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "changepwd_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -104,7 +125,7 @@ export class ApiJsonService {
     public vehicleCreate_success(): Observable<any> {
         return this.http.get(this.assestUrl + "vehicleCreate_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -112,7 +133,7 @@ export class ApiJsonService {
     public vehicleCreate_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "vehicleCreate_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -120,7 +141,7 @@ export class ApiJsonService {
     public vehicleList_success(): Observable<any> {
         return this.http.get(this.assestUrl + "vehicleList_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -128,7 +149,7 @@ export class ApiJsonService {
     public vehicleList_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "vehicleList_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -136,7 +157,7 @@ export class ApiJsonService {
     public vehicleEdit_success(): Observable<any> {
         return this.http.get(this.assestUrl + "vehicleEdit_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -144,7 +165,7 @@ export class ApiJsonService {
     public vehicleEdit_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "vehicleEdit_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -152,7 +173,7 @@ export class ApiJsonService {
     public vehicleDelete_success(): Observable<any> {
         return this.http.get(this.assestUrl + "vehicleDelete_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -160,7 +181,7 @@ export class ApiJsonService {
     public vehicleDelete_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "vehicleDelete_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -168,7 +189,7 @@ export class ApiJsonService {
     public sessionCheck_success(): Observable<any> {
         return this.http.get(this.assestUrl + "sessionCheck_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -176,7 +197,7 @@ export class ApiJsonService {
     public sessionCheck_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "sessionCheck_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -184,7 +205,7 @@ export class ApiJsonService {
     public sessionAll_success(): Observable<any> {
         return this.http.get(this.assestUrl + "sessionAll_Success.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
@@ -192,7 +213,7 @@ export class ApiJsonService {
     public sessionAll_Error(): Observable<any> {
         return this.http.get(this.assestUrl + "sessionAll_Error.json")
             .map((response: Response) => {
-                return response.json(); 
+                return response.json();
             })
             .catch((error: any) => error);
     }
